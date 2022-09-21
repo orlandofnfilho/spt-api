@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +24,11 @@ import br.com.ficr.services.UsuarioService;
 
 @RestController
 @RequestMapping("spt/usuarios")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
+
+	private static final String HAS_AUTHORITY_ADMIN = "hasAuthority('ADMIN')";
+	private static final String HAS_ANY_AUTHORITY_ADMIN_USUARIO = "hasAnyAuthority('ADMIN','USUARIO')";
 
 	@Autowired
 	private UsuarioService usuarioService;
@@ -37,6 +43,7 @@ public class UsuarioController {
 	}
 
 	@GetMapping
+	@PreAuthorize(HAS_ANY_AUTHORITY_ADMIN_USUARIO)
 	public ResponseEntity<List<UsuarioResponseDTO>> findAll() {
 		List<UsuarioResponseDTO> response = usuarioService.findAll().stream().map(UsuarioMapper::fromEntity)
 				.collect(Collectors.toList());
@@ -44,6 +51,7 @@ public class UsuarioController {
 	}
 
 	@GetMapping("{id}")
+	@PreAuthorize(HAS_AUTHORITY_ADMIN)
 	public ResponseEntity<UsuarioResponseDTO> findById(@PathVariable Long id) {
 		Usuario usuario = usuarioService.findById(id);
 		UsuarioResponseDTO response = UsuarioMapper.fromEntity(usuario);

@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -14,6 +16,7 @@ import br.com.ficr.exceptions.error.StandardError;
 @ControllerAdvice
 public class ControllerExceptionHandler {
 
+	private static final String UNAUTHORIZED = "Unauthorized";
 	private static final String REQUISICAO_INVALIDA = "Requisição inválida";
 	private static final String BAD_REQUEST = "Bad Request";
 	private static final String CONFLICT = "Conflict";
@@ -42,6 +45,32 @@ public class ControllerExceptionHandler {
 		err.setMessage(e.getMessage());
 		err.setPath(request.getRequestURI());
 		return ResponseEntity.status(err.getStatus()).body(err);
+	}
+
+	@ExceptionHandler(AuthenticationException.class)
+	public ResponseEntity<StandardError> catchAuthenticationException(ResourceNotFoundException e,
+			HttpServletRequest request) {
+		StandardError err = new StandardError();
+		err.setTimestamp(Instant.now());
+		err.setStatus(HttpStatus.UNAUTHORIZED.value());
+		err.setError(UNAUTHORIZED);
+		err.setMessage(e.getMessage());
+		err.setPath(request.getRequestURI());
+		return ResponseEntity.status(err.getStatus()).body(err);
+	}
+
+	@ExceptionHandler(AccessDeniedException.class)
+	public ResponseEntity<StandardError> catchAccessDeneidException(AccessDeniedException e,
+			HttpServletRequest request) {
+
+		StandardError err = new StandardError();
+		err.setTimestamp(Instant.now());
+		err.setStatus(HttpStatus.FORBIDDEN.value());
+		err.setError(FORBIDDEN);
+		err.setMessage(e.getMessage());
+		err.setPath(request.getRequestURI());
+		return ResponseEntity.status(err.getStatus()).body(err);
+
 	}
 
 }

@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -35,12 +34,12 @@ public class Usuario implements Serializable, UserDetails {
 
 	private String senha;
 
-	@ManyToMany
-	private List<Perfil> perfis;
+	@ManyToOne
+	private Perfil perfil;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return this.perfis;
+		return List.of(this.perfil);
 	}
 
 	@Override
