@@ -1,0 +1,14 @@
+** SPT API CHECKLIST **
+
+[X] User CRUD
+[x] Security & JWT
+[x] Clinica CRUD
+[X] Endereco CRUD
+[X] Especialidade CRUD
+[ ] Paciente CRUD
+[ ] Médico CRUD
+[ ] Consultas CRUD
+[ ] Unit tests
+[ ] Docs with Postman/Swagger
+[ ] JaCoCo
+[ ] Extras

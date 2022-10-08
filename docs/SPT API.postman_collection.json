@@ -1,0 +1,401 @@
+{
+	"info": {
+		"_postman_id": "f188aabb-4ab2-4bf3-a524-f1b1a8ddddb7",
+		"name": "SPT API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18372179"
+	},
+	"item": [
+		{
+			"name": "Usuários",
+			"item": [
+				{
+					"name": "findAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiU1BULUFQSSIsImV4cCI6MTY2NDMyODEwMSwicGVyZmlsIjoiVVNVQVJJTyJ9.miSgPUyxNKcBw-0OJAT_G12JwkLLYUQCQ2zwJDmLDOM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/spt/usuarios",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spt",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiU1BULUFQSSIsImV4cCI6MTY2NDMyODcwOSwicGVyZmlsIjoiVVNVQVJJTyJ9.AxvNxBSkK7_nZ6c-6ixg6PPW4t4Le5VIYr4imAKNIPc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/spt/usuarios/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spt",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"teste@spt.com\",\r\n    \"senha\": \"Spt@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/spt/usuarios",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spt",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "auth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@spt.com\",\r\n    \"senha\": \"Spt@1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/spt/auth",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spt",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clínicas",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiU1BULUFQSSIsImV4cCI6MTY2NTc5MzI3MiwicGVyZmlsIjoiVVNVQVJJTyJ9.5N9xixW82DzM_8UiPfG3Q7UeTq60rdV3glE2JnVwO8I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Clinica1\",\r\n    \"urlLoc\": \"testando\",\r\n    \"cep\": \"50670-370\",\r\n    \"logradouro\": \"Rua Manoel Joaquim de Almeida\",\r\n    \"complemento\": \"\",\r\n    \"bairro\": \"Iputinga\",\r\n    \"localidade\": \"Recife\",\r\n    \"uf\": \"PE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/spt/clinicas",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spt",
+								"clinicas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiU1BULUFQSSIsImV4cCI6MTY2NTc5MzI3MiwicGVyZmlsIjoiVVNVQVJJTyJ9.5N9xixW82DzM_8UiPfG3Q7UeTq60rdV3glE2JnVwO8I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/spt/clinicas",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spt",
+								"clinicas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAllByNome",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiU1BULUFQSSIsImV4cCI6MTY2NTc5NDkzNywicGVyZmlsIjoiQURNSU4ifQ.ls7qXSriW4V-Uc0FxhHqCYQXF5RutlgMWFfqJulg1es",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/spt/clinicas/nome/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spt",
+								"clinicas",
+								"nome",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiU1BULUFQSSIsImV4cCI6MTY2NTc5MzI3MiwicGVyZmlsIjoiVVNVQVJJTyJ9.5N9xixW82DzM_8UiPfG3Q7UeTq60rdV3glE2JnVwO8I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/spt/clinicas/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spt",
+								"clinicas",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Especialidades",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiU1BULUFQSSIsImV4cCI6MTY2NTgwMzA5MywicGVyZmlsIjoiQURNSU4ifQ.2ACVxd5XJ8ChowiVzUQT9WT75eD7GKTq0TKRdQMKAH0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Pediatra\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/spt/especialidades",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spt",
+								"especialidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiU1BULUFQSSIsImV4cCI6MTY2NTgwMzA5MywicGVyZmlsIjoiQURNSU4ifQ.2ACVxd5XJ8ChowiVzUQT9WT75eD7GKTq0TKRdQMKAH0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/spt/especialidades",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spt",
+								"especialidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAllByNome",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiaXNzIjoiU1BULUFQSSIsImV4cCI6MTY2NTc5NDkzNywicGVyZmlsIjoiQURNSU4ifQ.ls7qXSriW4V-Uc0FxhHqCYQXF5RutlgMWFfqJulg1es",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/spt/especialidades/nome/pe",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spt",
+								"especialidades",
+								"nome",
+								"pe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaXNzIjoiU1BULUFQSSIsImV4cCI6MTY2NTc5MzI3MiwicGVyZmlsIjoiVVNVQVJJTyJ9.5N9xixW82DzM_8UiPfG3Q7UeTq60rdV3glE2JnVwO8I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/spt/especialidades/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"spt",
+								"especialidades",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

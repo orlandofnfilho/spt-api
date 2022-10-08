@@ -50,6 +50,15 @@ public class UsuarioService implements UserDetailsService {
 		return optional.get();
 	}
 
+	public Usuario update(Usuario obj, Long id) {
+		Usuario usuarioCadastrado = this.findById(id);
+		validEmail(obj.getEmail());
+		usuarioCadastrado.setEmail(obj.getEmail());
+		usuarioCadastrado.setSenha(new BCryptPasswordEncoder().encode(obj.getSenha()));
+		return usuarioCadastrado;
+
+	}
+
 	@Transactional(readOnly = true)
 	public void validEmail(String email) {
 		Optional<Usuario> optional = usuarioRepository.findByEmail(email);
@@ -65,6 +74,11 @@ public class UsuarioService implements UserDetailsService {
 			throw new UsernameNotFoundException("Usuário não encontrado: " + email);
 		}
 		return optional.get();
+	}
+
+	public void delete(Long id) {
+		Usuario usuarioCadastrado = this.findById(id);
+		usuarioRepository.delete(usuarioCadastrado);
 	}
 
 	@Override
